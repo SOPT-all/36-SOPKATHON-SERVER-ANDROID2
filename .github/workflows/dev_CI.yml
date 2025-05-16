@@ -3,7 +3,7 @@ name: SOPTKATHON_CI
 on:
   pull_request:
     branches:
-      - dev
+      - develop
 
 jobs:
   build:
