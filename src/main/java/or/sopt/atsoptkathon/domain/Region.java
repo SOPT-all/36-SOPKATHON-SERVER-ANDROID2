@@ -24,6 +24,7 @@ public class Region extends BaseEntity {
 
 
     private String regionName;
+    private String regionSubName;
     private String regionDescription;
 
 }
