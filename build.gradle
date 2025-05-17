@@ -44,6 +44,15 @@ dependencies {
 
     // spring cloud
     implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+
+    // mockito
+    testImplementation 'org.mockito:mockito-core:5.4.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.4.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+
+    // H2
+    testImplementation 'com.h2database:h2'
+    runtimeOnly 'com.h2database:h2'
 }
 
 tasks.named('test') {
