@@ -4,14 +4,12 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import or.sopt.atsoptkathon.dto.GetProductDetailsDTO;
+import or.sopt.atsoptkathon.dto.PostProductResponseDTO;
 import or.sopt.atsoptkathon.global.reponse.ApiResponse;
 import or.sopt.atsoptkathon.global.reponse.ResponseDTO;
 import or.sopt.atsoptkathon.service.ProductService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("")
@@ -25,6 +23,16 @@ public class ProductController {
     @GetMapping("/product/{productId}")
     public ResponseEntity<ResponseDTO<?>> findProduct(@PathVariable Long productId) {
         GetProductDetailsDTO result = productService.getDetail(productId);
+
+        return ApiResponse.ok(result);
+    }
+
+
+    @Operation(summary = "제품 공구 신청 API 입니다")
+    @PostMapping("/register/{productId}")
+    public ResponseEntity<ResponseDTO<?>> registerProduct(@PathVariable Long productId,
+                                                          @RequestParam Long memberId) {
+        PostProductResponseDTO result = productService.registerProduct(productId, memberId);
 
         return ApiResponse.ok(result);
     }

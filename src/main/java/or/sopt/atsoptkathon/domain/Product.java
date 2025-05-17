@@ -38,4 +38,8 @@ public class Product extends BaseEntity {
     private int participantCount;
     private int maxParticipantCount;
 
+    public void addParticipantCount() {
+        this.participantCount += 1;
+    }
+
 }
