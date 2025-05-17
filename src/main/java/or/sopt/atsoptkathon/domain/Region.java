@@ -1,9 +1,6 @@
 package or.sopt.atsoptkathon.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +22,8 @@ public class Region extends BaseEntity {
 
     private String regionName;
     private String regionSubName;
+
+    @Lob
     private String regionDescription;
 
 }
