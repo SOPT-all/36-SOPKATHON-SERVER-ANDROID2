@@ -22,9 +22,4 @@ public class GlobalExceptionalHandler {
                         e.getErrorStatus().getMessage())
         );
     }
-
-    @ExceptionHandler(MissingRequestHeaderException.class)
-    public ResponseEntity<?> handleMissingRequestHeaderException(MissingRequestHeaderException e) {
-        return ApiResponse.fail(ErrorStatus._HEADER_NOT_FOUND);
-    }
 }

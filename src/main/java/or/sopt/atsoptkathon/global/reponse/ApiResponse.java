@@ -9,28 +9,36 @@ import org.springframework.http.ResponseEntity;
 public class ApiResponse {
 
 
-    public static <T> ResponseEntity<ResponseDTO<?>> ok(SuccessStatus successStatus, T result) {
+    public static <T> ResponseEntity<ResponseDTO<?>> ok(T result) {
+
+        // 매번 성공 상태를 반환하는게 해커톤에 맞지 않을 것 같아 하드코딩으로 추가하였습니다
+        SuccessStatus soptkathonSuccess = SuccessStatus._SOPTKATHON_SUCCESS;
+
         return ResponseEntity
                 .status(200)
                 .body(
                         new ResponseDTO<>(
-                                successStatus.getHttpStatus(),
-                                successStatus.getCode(),
-                                successStatus.getMessage(),
+                                soptkathonSuccess.getHttpStatus(),
+                                soptkathonSuccess.getCode(),
+                                soptkathonSuccess.getMessage(),
                                 true,
                                 result
                         )
                 );
     }
 
-    public static <T> ResponseEntity<ResponseDTO<?>> ok(SuccessStatus successStatus) {
+    public static <T> ResponseEntity<ResponseDTO<?>> ok() {
+
+        // 매번 성공 상태를 반환하는게 해커톤에 맞지 않을 것 같아 하드코딩으로 추가하였습니다
+        SuccessStatus soptkathonSuccess = SuccessStatus._SOPTKATHON_SUCCESS;
+
         return ResponseEntity
                 .status(200)
                 .body(
                         new ResponseDTO<>(
-                                successStatus.getHttpStatus(),
-                                successStatus.getCode(),
-                                successStatus.getMessage(),
+                                soptkathonSuccess.getHttpStatus(),
+                                soptkathonSuccess.getCode(),
+                                soptkathonSuccess.getMessage(),
                                 true
                         )
                 );
