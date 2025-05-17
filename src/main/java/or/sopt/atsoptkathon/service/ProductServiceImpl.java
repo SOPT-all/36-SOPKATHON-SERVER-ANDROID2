@@ -60,6 +60,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
+
     private static void addProductParticipantCount(Product findProduct) {
         if (findProduct.getParticipantCount() >= findProduct.getMaxParticipantCount()) {
             throw new CustomHandler(ErrorStatus._PRODUCT_MAX_COUNT);
