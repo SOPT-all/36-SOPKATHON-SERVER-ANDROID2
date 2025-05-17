@@ -38,7 +38,7 @@ public class ProductController {
         return ApiResponse.ok(result);
     }
 
-
+    @Operation(summary = "지역별 상품 조회 API 입니다")
     @GetMapping("/products/{regionId}")
     public ResponseEntity<ResponseDTO<?>> findRegionProduct(@PathVariable Long regionId) {
         GetRegionProductDTO result = productService.getRegionProduct(regionId);
