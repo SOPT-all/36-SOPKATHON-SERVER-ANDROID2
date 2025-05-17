@@ -5,6 +5,7 @@ import or.sopt.atsoptkathon.domain.Member;
 import or.sopt.atsoptkathon.domain.Product;
 import or.sopt.atsoptkathon.domain.ProductImage;
 import or.sopt.atsoptkathon.domain.Region;
+import or.sopt.atsoptkathon.domain.common.enums.ProductCategory;
 import or.sopt.atsoptkathon.dto.GetProductDetailsDTO;
 import or.sopt.atsoptkathon.dto.GetRegionProductDTO;
 import or.sopt.atsoptkathon.dto.PostProductResponseDTO;
@@ -36,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
     public GetProductDetailsDTO getDetail(Long productId) {
         Product findProduct = getFindProduct(productId);
 
-        List<ProductImage> allByProduct = productImageRepository.findAllByProduct(findProduct);
+        List<ProductImage> allByProduct = productImageRepository.findAllByProductAndProductCategory(findProduct, ProductCategory.DETAILS);
 
         List<String> imageLinks = allByProduct.stream()
                 .map(ProductImage::getImageLink)
@@ -58,6 +59,7 @@ public class ProductServiceImpl implements ProductService {
 
         return PostProductResponseDTO.from(findProduct);
     }
+
 
 
     private static void addProductParticipantCount(Product findProduct) {
