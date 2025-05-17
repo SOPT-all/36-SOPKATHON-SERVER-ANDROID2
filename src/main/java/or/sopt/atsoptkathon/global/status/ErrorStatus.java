@@ -20,7 +20,10 @@ public enum ErrorStatus {
     _SERVER_ERROR(HttpStatus.NOT_ACCEPTABLE,"SERVER5001","서버에러입니다. 서버개발자에게 문의해주세요"),
     _SERVER_CUSTOM_ERROR(HttpStatus.BAD_REQUEST,"SERVER5002","서버에서 설정한 커스텀 예외입니다"),
 
-    _PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND,"PRODUCT4001","상품을 찾을 수 없습니다")
+    _MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND,"MEMBER4001","회원을 찾을 수 없습니다"),
+
+    _PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND,"PRODUCT4001","상품을 찾을 수 없습니다"),
+    _PRODUCT_MAX_COUNT(HttpStatus.BAD_REQUEST,"PRODUCT4002","상품 최대 공구 참여인원을 초과하였습니다")
     ;
 
     private final HttpStatus httpStatus;
