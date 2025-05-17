@@ -22,4 +22,17 @@ public class GlobalExceptionalHandler {
                         e.getErrorStatus().getMessage())
         );
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> handleCustomException() {
+
+        ErrorStatus serverError = ErrorStatus._SERVER_ERROR;
+
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(
+                new ErrorDTO(
+                        serverError.getHttpStatus(),
+                        serverError.getCode(),
+                        serverError.getMessage())
+        );
+    }
 }
