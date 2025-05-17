@@ -6,10 +6,10 @@ import lombok.RequiredArgsConstructor;
 import or.sopt.atsoptkathon.global.reponse.ApiResponse;
 import or.sopt.atsoptkathon.global.reponse.ResponseDTO;
 import or.sopt.atsoptkathon.service.TestService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/test")
@@ -27,4 +27,12 @@ public class TestController {
 
         return ApiResponse.ok(result);
     }
+
+    @PostMapping(path = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public void save(@RequestParam("file") MultipartFile file) {
+
+        testService.testUpload(file);
+    }
+
+
 }
