@@ -1,4 +1,4 @@
-package or.sopt.atsoptkathon.config;
+package or.sopt.atsoptkathon.global.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
