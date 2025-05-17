@@ -11,6 +11,8 @@ import or.sopt.atsoptkathon.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -24,8 +26,12 @@ public class ProductServiceImpl implements ProductService {
         Product findProduct = productRepository.findById(productId)
                 .orElseThrow(() -> new CustomHandler(ErrorStatus._PRODUCT_NOT_FOUND));
 
-        productImageRepository.findAllByProduct()
+        List<ProductImage> allByProduct = productImageRepository.findAllByProduct(findProduct);
 
-        return GetProductDetailsDTO.from(findProduct);
+        List<String> imageLinks = allByProduct.stream()
+                .map(ProductImage::getImageLink)
+                .toList();
+
+        return GetProductDetailsDTO.from(findProduct,imageLinks);
     }
 }

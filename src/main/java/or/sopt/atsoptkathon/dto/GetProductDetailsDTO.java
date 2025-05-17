@@ -28,7 +28,7 @@ public class GetProductDetailsDTO {
 
     private List<String> imageLinks;
 
-    public static GetProductDetailsDTO from(Product product) {
+    public static GetProductDetailsDTO from(Product product,List<String> imageLinks) {
 
         return GetProductDetailsDTO.builder()
                 .productName(product.getProductName())
@@ -37,6 +37,7 @@ public class GetProductDetailsDTO {
                 .sellerName(product.getSellerName())
                 .participantCount(product.getParticipantCount())
                 .maxParticipantCount(product.getMaxParticipantCount())
+                .imageLinks(imageLinks)
                 .build();
     }
 }
