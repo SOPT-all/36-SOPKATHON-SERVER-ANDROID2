@@ -18,8 +18,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
+
     private final ProductRepository productRepository;
     private final ProductImageRepository productImageRepository;
+
 
     @Override
     public GetProductDetailsDTO getDetail(Long productId) {
