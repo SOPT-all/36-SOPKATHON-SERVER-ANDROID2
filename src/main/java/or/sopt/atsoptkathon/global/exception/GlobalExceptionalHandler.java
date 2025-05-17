@@ -1,6 +1,7 @@
 package or.sopt.atsoptkathon.global.exception;
 
 
+import jakarta.validation.ConstraintViolationException;
 import or.sopt.atsoptkathon.global.reponse.ApiResponse;
 import or.sopt.atsoptkathon.global.status.ErrorDTO;
 import or.sopt.atsoptkathon.global.status.ErrorStatus;
@@ -24,7 +25,20 @@ public class GlobalExceptionalHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> handleCustomException() {
+    public ResponseEntity<?> handleException() {
+
+        ErrorStatus serverError = ErrorStatus._SERVER_ERROR;
+
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(
+                new ErrorDTO(
+                        serverError.getHttpStatus(),
+                        serverError.getCode(),
+                        serverError.getMessage())
+        );
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<?> handleException(ConstraintViolationException e) {
 
         ErrorStatus serverError = ErrorStatus._SERVER_ERROR;
 
