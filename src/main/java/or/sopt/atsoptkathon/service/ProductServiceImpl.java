@@ -19,6 +19,7 @@ import or.sopt.atsoptkathon.repository.RegionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -83,7 +84,12 @@ public class ProductServiceImpl implements ProductService {
         List<Product> findRegionProduct = productRepository.findByRegion(findRegion);
 
         List<RegionProductDTO> dto = findRegionProduct.stream()
-                .map(RegionProductDTO::from)
+                .map(product -> {
+                    ProductImage thumbnailImage = productImageRepository.findByProductAndProductCategory(product, ProductCategory.THUMBNAIL);
+                    String imageLink = thumbnailImage != null ? thumbnailImage.getImageLink() : null;
+
+                    return RegionProductDTO.from(product, imageLink);
+                })
                 .toList();
 
         return new GetRegionProductDTO(dto);
