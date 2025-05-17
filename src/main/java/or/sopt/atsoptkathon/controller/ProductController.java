@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import or.sopt.atsoptkathon.dto.GetProductDetailsDTO;
 import or.sopt.atsoptkathon.dto.PostProductResponseDTO;
+import or.sopt.atsoptkathon.dto.GetRegionProductDTO;
 import or.sopt.atsoptkathon.global.reponse.ApiResponse;
 import or.sopt.atsoptkathon.global.reponse.ResponseDTO;
 import or.sopt.atsoptkathon.service.ProductService;
@@ -34,6 +35,13 @@ public class ProductController {
                                                           @RequestParam Long memberId) {
         PostProductResponseDTO result = productService.registerProduct(productId, memberId);
 
+        return ApiResponse.ok(result);
+    }
+
+
+    @GetMapping("/products/{regionId}")
+    public ResponseEntity<ResponseDTO<?>> findRegionProduct(@PathVariable Long regionId) {
+        GetRegionProductDTO result = productService.getRegionProduct(regionId);
         return ApiResponse.ok(result);
     }
 }
