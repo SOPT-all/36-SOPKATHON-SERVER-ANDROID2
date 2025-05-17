@@ -15,5 +15,10 @@ public class GetCommentResponseListDTO {
 
     List<GetCommentResponseDTO> comments;
 
-    
+    public static GetCommentResponseListDTO from(List<GetCommentResponseDTO> comments) {
+
+        return GetCommentResponseListDTO.builder()
+                .comments(comments)
+                .build();
+    }
 }
