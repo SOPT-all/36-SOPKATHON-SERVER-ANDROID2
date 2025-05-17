@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import or.sopt.atsoptkathon.dto.GetProductDetailsDTO;
+import or.sopt.atsoptkathon.dto.GetRegionDetailDTO;
 import or.sopt.atsoptkathon.dto.PostProductResponseDTO;
 import or.sopt.atsoptkathon.dto.GetRegionProductDTO;
 import or.sopt.atsoptkathon.global.reponse.ApiResponse;
