@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import or.sopt.atsoptkathon.domain.Comment;
 
 @Getter
 @NoArgsConstructor
@@ -17,5 +18,11 @@ public class GetCommentResponseDTO {
 
     private int score;
 
-    public static
+    public static GetCommentResponseDTO from(String name,Comment comment) {
+        return GetCommentResponseDTO.builder()
+                .name(name)
+                .content(comment.getContent())
+                .score(comment.getScore())
+                .build();
+    }
 }
